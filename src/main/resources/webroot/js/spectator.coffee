@@ -1,4 +1,4 @@
-Config.title = ['MEMLEAK', "PLUMBER"]
+Config.title = ['MEMLEAK3', "PLUMBER"]
 
 eb = new EventBus("http://#{window.location.host}/eventbus")
 players = {}
@@ -18,7 +18,7 @@ eb.onopen = ->
           p.pos.x = msg.body.x
           p.pos.y = msg.body.y
           p.drawing
-          .setColor Color.white
+          .setColor Color.blue
           .addRect 0.05
 
 window.initialize = ->
@@ -55,7 +55,7 @@ class Leak extends Actor
     @setDisplayPriority 0.5
   begin: ->
     @drawing
-    .setColor Color.yellow
+    .setColor Color.white
     .addRect 0.05
 
     @pos.setXy (0.rr 1), (0.rr 1)
