@@ -7,6 +7,15 @@
   <groupId>io.vertx</groupId>
   <artifactId>devoxx</artifactId>
   <version>2015</version>
+  
+  <properties>
+    <vertx.version>3.3.3</vertx.version>
+    <fabric8.vertx.plugin.version>1.0.2</fabric8.vertx.plugin.version>
+    <vertx.verticle>io.vertx.devoxx.DevoxxVerticle</vertx.verticle>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
 
   <dependencies>
     <dependency>
@@ -28,6 +37,32 @@
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>io.fabric8</groupId>
+        <artifactId>vertx-maven-plugin</artifactId>
+        <version>${fabric8.vertx.plugin.version}</version>
+        <executions>
+          <execution>
+            <id>vmp-init-package</id>
+            <goals>
+              <goal>initialize</goal>
+              <goal>package</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>vmp-run</id>
+            <goals>
+              <goal>initialize</goal>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <redeploy>true</redeploy>
+        </configuration>
+      </plugin>
+
+      <!--
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
@@ -64,7 +99,7 @@
           </execution>
         </executions>
       </plugin>
-
+-->
     </plugins>
   </build>
 </project>
